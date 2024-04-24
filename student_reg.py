@@ -343,7 +343,7 @@ class Registation():
             conn.close()
 
     def data_fetch(self):
-        conn=mysql.connector.connect(host='localhost',user="root",password='xxxxxxx',database='student_reg')
+        conn=mysql.connector.connect(host='localhost',user="root",password='xxx',database='student_reg')
         cur_sor=conn.cursor()
         cur_sor.execute("Select * from student")
         data=cur_sor.fetchall()
@@ -387,7 +387,7 @@ class Registation():
             msg.showerror("Error","Invalid OTP Please Try Again")
         else:
             try:
-                conn=mysql.connector.connect(host='localhost',user="root",password='xxxxxx',database='student_reg')
+                conn=mysql.connector.connect(host='localhost',user="root",password='xxxx',database='student_reg')
                 cur_sor=conn.cursor()
                 cur_sor.execute("update student set name=%s,fname=%s,email=%s,mobile=%s,gender=%s,dob=%s,course=%s,branch=%s,sem=%s,year=%s,address=%s where roll=%s",(self.sname.get(),self.father_name.get(),self.email_id.get(),self.phone_no.get(),self.gender.get(),self.dob.get(),self.course_name.get(),self.branchs.get(),self.sem.get(),self.parent_email.get(),self.add_entry.get("1.0", "end-1c"),self.roll_no.get()))
                 msg.showinfo("Success","Student Details Successfully  Updated",parent=self.main_frame1)
@@ -420,7 +420,7 @@ class Registation():
                         path=file.split('.')[1]
                         if roll==str(path):
                             os.remove(os.path.join(p,file)) 
-                    conn=mysql.connector.connect(host='localhost',user="root",password='xxxxxxx',database='student_reg')
+                    conn=mysql.connector.connect(host='localhost',user="root",password='rksaini',database='student_reg')
                     cur_sor=conn.cursor()
                     query="delete from student where roll=%s"
                     rollno=(self.roll_no.get(),)
@@ -490,15 +490,15 @@ class Registation():
     def send_otp(self):
         self.generate_otp=random.randint(1000,9999)
         #-----------for mobile otp--------
-        #self.sid="xxxxxxxxxxxxxxxxxxxxxxxxxx"
+        #self.sid="xxxxxxxxxxxxxxx"
         #self.token="xxxxxxxxxxxxxxxxxxxx" 
         #self.client=Client(self.sid,self.token)
         #self.body=f"Your verification Code is : {self.generate_otp}"
         
 
         #-----------for email otp-----------
-        self.my_email="xxxxxxxxxxxx@gmail.com"
-        self.app_pass='xxxxxxxxxx'
+        self.my_email="xxxxxxxxxx@gmail.com"
+        self.app_pass='xxxxxxxxxxxxxxx'
         self.receiver_email=self.email_id.get()
         self.subject="Facial Attendance Verification OTP"
         self.full_msg=f"Dear {self.sname.get()}\n\nYour Verification OTP is : {self.generate_otp}\n\n\n\nPlease do not share it with anyone for security reasons. Thank you for using Facial Attendance Software offered by SDCET MUZAFFARNAGAR.\n\n\n\n                This is a system generated email please do not reply on it"
@@ -602,7 +602,7 @@ class Registation():
                 q=('select * from student where roll=%s')
             elif self.sch.get()=="Email":
                 q=('select * from student where email=%s')  
-            conn=mysql.connector.connect(host='localhost',user="root",password='xxxxxxxxxxxx',database='student_reg')
+            conn=mysql.connector.connect(host='localhost',user="root",password='xxxxxxxx',database='student_reg')
             cur_sor=conn.cursor()
             value=(self.schdata.get(),)
             cur_sor.execute((q),value)
